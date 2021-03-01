@@ -1,19 +1,24 @@
 function solution(a, b) {
     let answer = 0;
 
-    for (const item of b) {
-        const c = item + '';
-        if (c.length > 1) {
-            let strings = c.split('');
-            if (parseInt(strings[1]) === a) {
-                answer++;
-            }
-        } else {
-            if (parseInt(c) === a) {
-                answer++;
-            }
-        }
+    // for (const item of b) {
+    //     const c = item + '';
+    //     if (c.length > 1) {
+    //         let strings = c.split('');
+    //         if (parseInt(strings[1]) === a) {
+    //             answer++;
+    //         }
+    //     } else {
+    //         if (parseInt(c) === a) {
+    //             answer++;
+    //         }
+    //     }
+    // }
 
+    for (const item of b) {
+        if (item % 10 === a) {
+            answer++;
+        }
     }
 
     console.log(answer);
