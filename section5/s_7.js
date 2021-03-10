@@ -1,11 +1,26 @@
 function solution(a, b) {
     let answer = 'YES';
+    let map = new Map();
 
-    const aa = a.split('').sort().join('');
-    const bb = b.split('').sort().join('');
+    for (const item of a) {
+        if (map.has(item)) {
+            map.set(item, map.get(item) + 1);
+        } else {
+            map.set(item, 1);
+        }
+    }
 
-    if (aa != bb) {
-        answer = 'NO';
+    for (const item of b) {
+        if (map.has(item)) {
+            map.set(item, map.get(item) - 1);
+        }
+    }
+
+    for ([key, value] of map) {
+        if (value !== 0) {
+            answer = 'NO';
+            break;
+        }
     }
 
     console.log(answer);
