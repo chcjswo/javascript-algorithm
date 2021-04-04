@@ -1,23 +1,20 @@
 function solution(n, k) {
     let answer;
-    let a = [];
-    for (let i = 1; i <= n; i++) {
-        a.push(i);
-    }
+    let queue = Array.from({length: n}, (v, i) => i + 1);
 
     let i = 1;
-    let index = 0;
-    while (a.length > 1) {
-        index = (k * i ) - 1;
-        if (index > a.length) {
-            index = a.length - index;
+    while (queue.length > 1) {
+        if (i++ === k) {
+            i = 0;
+        } else {
+            const tmp = queue[0];
+            queue.splice(0, 1);
+            queue[queue.length - 1] = tmp;
         }
-        a.splice(index, 1)
-        i++;
     }
-    answer = a;
+    answer = queue.shift();
 
     console.log(answer);
 }
 
-solution(8, 3);
+solution(5, 3);
